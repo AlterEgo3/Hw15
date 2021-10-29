@@ -26,7 +26,7 @@
     <div class="container">
         <div class="intro__inner">
             <h2 class="intro__suptitle">Software GIRAFFE</h2>
-            <h1 class="intro__title">Приветствуем в заповеднике,</h1>
+            <h1 class="intro__title">Приветствуем в заповеднике, {{$user->name}}</h1>
             <a class="btn" href="#2">Посмотреть посты</a>
         </div>
     </div>

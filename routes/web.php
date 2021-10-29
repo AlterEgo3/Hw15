@@ -20,12 +20,12 @@ use Illuminate\Support\Facades\Route;
 //    echo "<pre>";
 //    var_dump(\App\Models\User::where('name', request('name'))->get()->first()->name);
 //});
+Route::get('/{id}', [\App\Http\Controllers\AdController::class, 'index'])->whereNumber('id')->name('home');
 
-Route::get('/', [\App\Http\Controllers\AdController::class, 'index']);
 Route::get('/', [\App\Http\Controllers\AuthController::class, 'login_form'])->name('login');
-
 Route::post('/', [\App\Http\Controllers\AuthController::class, 'log_in']);
 Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'log_out']);
+
 
 Route::get('/edit/{?id}', function ($id=null){});
 Route::post('/edit/{?id}', function ($id=null){});
