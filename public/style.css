@@ -43,9 +43,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .intro2 {
-    background: url("/images/jiraf21.png") center no-repeat;
-    -webkit-background-size: cover;
-    background-size: cover;
+
 }
 
 .post{

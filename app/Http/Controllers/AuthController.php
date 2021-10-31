@@ -10,12 +10,7 @@ use Illuminate\Support\Str;
 class AuthController
 
 {
-    public function login_form()
-    {
-        return view('layout');
-    }
-
-    public function log_in(Request $request)
+    public function login(Request $request)
     {
         $user = User::where('name', $request->get('name'))->get()->first();
         $credentials = $request->only('name', 'password');
@@ -34,7 +29,7 @@ class AuthController
             }
 
             if(Auth::attempt($credentials)){
-                return view('authuser');
+                return view('layout');
             }
             return redirect('/#2')->withErrors([
                 'password' => 'Имя пользователя и пароль не совпадают',
@@ -43,13 +38,13 @@ class AuthController
 
         Auth::login($user);
 
-        return redirect('/#2');
+        return redirect('/');
     }
 
-    public function log_out()
+    public function logout()
     {
         Auth::logout();
 
-        return redirect()->route('login');
+        return redirect('/');
     }
 }

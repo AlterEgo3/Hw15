@@ -12,10 +12,9 @@ class AdController extends Controller
 {
     public function index()
     {
-        dd('!!!');
-//        $ads = Ad::paginate(5);
-//
-//        return view('ads.index', compact('ads'));
+        $ads = Ad::paginate(5);
+
+        return view('ads.index', compact('ads'));
     }
 
     public function show($id)
@@ -24,7 +23,7 @@ class AdController extends Controller
 
         return view('ads.show', compact('ad'));
     }
-//
+
 //    public function update_or_create(Request $request)
 //    {
 //
