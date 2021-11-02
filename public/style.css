@@ -27,7 +27,6 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 200px;
 }
 
 .intro {
@@ -43,17 +42,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .intro2 {
-
+    background: url("/images/jiraf21.png") center no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
 }
 
 .post{
-    font-size: 24px;
-    margin: 5px;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1;
+    color: yellow;
 }
 
-.post1{
-
+.posttitle{
+    font-size: 25px;
+    background: dodgerblue;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
+
 
 .intro__inner {
     width: 100%;
@@ -94,6 +102,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .section__header {
     width: 250px;
+    margin: 0 auto 0px;
+    border: 2px solid #ccc;
+    text-align: center;
+    padding: 20px;
+    background-color: #042c17;
+}
+
+.section__header1 {
+    width: 900px;
     margin: 0 auto 0px;
     border: 2px solid #ccc;
     text-align: center;
@@ -182,7 +199,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #fce38a;
 }
 
-.btn {
+.btn1 {
     display: inline-block;
     vertical-align: top;
     padding: 8px 30px;
@@ -252,5 +269,4 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 24px;
     font-weight: 700;
 }
-
 

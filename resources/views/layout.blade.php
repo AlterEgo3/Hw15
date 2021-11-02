@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&amp;subset=cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&amp;subset=cyrillic-ext" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>GIRAFFE</title>
 </head>
 <body>
@@ -32,10 +33,10 @@
             <h2 class="intro__suptitle">Software GIRAFFE</h2>
             @if($user==null)
             <h1 class="intro__title">Приветствуем в заповеднике</h1>
-                    <a class="btn" href="#2">Стань участником заповедника</a>
+                    <a class="btn1" href="#2">Стань участником заповедника</a>
             @else
                 <h1 class="intro__title">Приветствуем в заповеднике, {{$user->name}}</h1>
-                <a class="btn" href="#2">Посмотреть посты</a>
+                <a class="btn1" href="#2">Посмотреть посты</a>
                 @endif
         </div>
     </div>
@@ -45,7 +46,7 @@
         <div class="container2">
             <div class="section__header">
                 <div class = "container-fluid">
-                    <form method="post">
+                    <form method="post" action="/login">
                         @csrf
                         <h3 class="registration">Регистрация жирафиков</h3>
                         <div class="mb-3">
@@ -75,12 +76,14 @@
         </div>
 </section>
 @endif
-    <section class="intro2" id="2">
+<section class="intro2" id="2">
+    <div class="section__header1">
         <div class="container2">
             <div class="post">
                 @yield('content')
             </div>
         </div>
-    </section>
+    </div>
+</section>
 </body>
 </html>

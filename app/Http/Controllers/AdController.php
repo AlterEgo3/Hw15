@@ -12,7 +12,7 @@ class AdController extends Controller
 {
     public function index()
     {
-        $ads = Ad::paginate(5);
+        $ads = Ad::OrderBy('id', 'desc')->paginate(5);
 
         return view('ads.index', compact('ads'));
     }
@@ -24,50 +24,34 @@ class AdController extends Controller
         return view('ads.show', compact('ad'));
     }
 
-//    public function update_or_create(Request $request)
-//    {
-//
-//        if ($request->method() == 'POST') {
-//            $request -> validate([
-//                'title' => ['required'],
-//                'description' => ['required'],
-//            ]);
-//            Ad::updateOrCreate(
-//                ['id' => $request->get('id') ?? null],
-//                [
-//                    'title' => $request->get('title'),
-//                    'description' => $request->get('description'),
-//                    'user_id' => Auth::id(),
-//                ]);
-//
-//            return redirect('/');
-//        }
-//
-//        $data = [];
-//
-//        if (!empty($id = $request->route()->parameter('id'))) {
-//            $data['ad'] = Ad::find($id);
-//
-//        }
-//
-//        return view('actions.form', $data);
-//    }
-//
-//    public function delete(Request $request)
-//    {
-//        $ad = Ad::find($request->route()->parameter('id'));
-//        if($ad->user_id !== Auth::id()){
-//            return redirect()->route('warning');
-//        }
-//
-//        $ad->delete();
-//        return redirect('/');
-//    }
-//
-//    public function warning()
-//    {
-//        return back()->withErrors([
-//            'password' => 'Имя пользователя и пароль не совпадают',
-//        ]);
-//    }
+    public function create(Ad $ad = null)
+    {
+        return view('ads.form', compact('ad'));
+    }
+
+    public function save(Request $request, Ad $ad = null)
+    {
+
+        $data = $request->validate([
+            'title' => ['required'],
+            'description' => ['required'],
+        ]);
+
+        $data['user_id'] = Auth::id();
+
+        Ad::UpdateOrCreate(['id' => $ad->id ?? null], $data);
+
+        return redirect()->route('home');
+    }
+
+    public function delete(Ad $ad)
+    {
+        if (isset($ad) && $ad->user_id !== Auth::id()) {
+            return redirect()->route('home');
+        }
+
+        $ad->delete();
+
+        return back();
+    }
 }

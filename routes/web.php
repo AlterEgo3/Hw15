@@ -13,20 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::match(['get', 'post'], '/', function () {
-//    var_dump(request()->user()->name);
-//    echo "<br>";
-//
-//    echo "<pre>";
-//    var_dump(\App\Models\User::where('name', request('name'))->get()->first()->name);
-//});
 Route::get('/', [\App\Http\Controllers\AdController::class, 'index'])->name('home');
 Route::get('/{id}', [\App\Http\Controllers\AdController::class, 'show'])->whereNumber('id')->name('ads.show');
 
 Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
-Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 
-Route::get('/edit/{?id}', function ($id=null){});
-Route::post('/edit/{?id}', function ($id=null){});
+Route::get('/edit/{ad?}', [\App\Http\Controllers\AdController::class, 'create'])->name('ads.create');
+Route::post('/edit/{ad?}', [\App\Http\Controllers\AdController::class, 'save']);
 
-Route::get('/delete/{?id}', function ($id=null){});
+Route::get('/delete/{ad}', [\App\Http\Controllers\AdController::class, 'delete'])->name('ads.delete');
