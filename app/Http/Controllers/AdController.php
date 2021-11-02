@@ -26,11 +26,18 @@ class AdController extends Controller
 
     public function create(Ad $ad = null)
     {
+        if (isset($ad) && $ad->user_id !== Auth::id()) {
+            return redirect()->route('home');
+        }
+
         return view('ads.form', compact('ad'));
     }
 
     public function save(Request $request, Ad $ad = null)
     {
+        if (isset($ad) && $ad->user_id !== Auth::id()) {
+            return redirect()->route('home');
+        }
 
         $data = $request->validate([
             'title' => ['required'],
