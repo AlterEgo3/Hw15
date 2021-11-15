@@ -20,6 +20,12 @@ Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
 Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 
 Route::get('/edit/{ad?}', [\App\Http\Controllers\AdController::class, 'create'])->name('ads.create');
+
 Route::post('/edit/{ad?}', [\App\Http\Controllers\AdController::class, 'save']);
 
-Route::get('/delete/{ad}', [\App\Http\Controllers\AdController::class, 'delete'])->name('ads.delete');
+
+Route::get('/delete/{ad?}', [\App\Http\Controllers\AdController::class, 'delete'])->name('ads.delete')
+->middleware('can:delete, ad')->name('ads.delete');
+
+Route::get('/oauth', [\App\Http\Controllers\OauthController::class, 'index']);
+Route::get('/callback', [\App\Http\Controllers\OauthController::class, 'callback']);

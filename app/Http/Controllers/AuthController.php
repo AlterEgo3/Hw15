@@ -41,6 +41,6 @@ class AuthController
     {
         Auth::logout();
 
-        return back();
+        return redirect()->route('home');
     }
 }

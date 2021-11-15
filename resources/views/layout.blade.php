@@ -68,8 +68,12 @@
                             @endif
                         </div>
                         <div>
-                            <input type="submit" class="btn btn-success" style="background-color: #EBD55A; border-color: yellow;" value="Вход">
+                            <input class="btn1" type="submit" value="Вход">
                         </div>
+                        <div class="post">
+                            -OR-
+                        </div>
+                        <a class="btn1" href="/oauth">Вход через Discord</a>
                     </form>
                 </div>
             </div>
